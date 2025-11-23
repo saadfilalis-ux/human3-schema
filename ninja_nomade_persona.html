@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ninja Nomade Rider Daimyo Stark</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, #0a0a0a 0%, #0d1f0d 50%, #0a0a0a 100%);
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(180deg, rgba(0,100,0,0.3) 0%, transparent 100%);
+            border-bottom: 2px solid #006400;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '武';
+            position: absolute;
+            font-size: 300px;
+            opacity: 0.05;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #00ff00;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            color: #00ff00;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            text-shadow: 0 0 20px rgba(0,255,0,0.5);
+            margin-bottom: 10px;
+            animation: glitch 3s infinite;
+        }
+
+        @keyframes glitch {
+            0%, 100% { text-shadow: 0 0 20px rgba(0,255,0,0.5); }
+            50% { text-shadow: 2px 2px 0 #006400, -2px -2px 0 #00ff00; }
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            color: #888;
+            letter-spacing: 4px;
+        }
+
+        .emblem {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 40px 0;
+            position: relative;
+        }
+
+        .emblem-circle {
+            width: 250px;
+            height: 250px;
+            border: 3px solid #006400;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle, rgba(0,100,0,0.2) 0%, transparent 70%);
+            position: relative;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .emblem-symbol {
+            font-size: 120px;
+            color: #00ff00;
+            text-shadow: 0 0 30px rgba(0,255,0,0.7);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .card {
+            background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+            border: 1px solid #333;
+            border-left: 4px solid #006400;
+            padding: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 0%, rgba(0,100,0,0.1) 50%, transparent 100%);
+            transform: translateX(-100%);
+            transition: transform 0.5s;
+        }
+
+        .card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-left-color: #00ff00;
+            box-shadow: 0 10px 30px rgba(0,100,0,0.3);
+        }
+
+        .card-title {
+            font-size: 1.5em;
+            color: #00ff00;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-icon {
+            font-size: 1.3em;
+        }
+
+        .card-content {
+            color: #aaa;
+            line-height: 1.8;
+        }
+
+        .principles {
+            background: rgba(0,100,0,0.1);
+            border: 2px solid #006400;
+            padding: 40px;
+            margin: 40px 0;
+            position: relative;
+        }
+
+        .principles h2 {
+            text-align: center;
+            color: #00ff00;
+            font-size: 2em;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+        }
+
+        .principle-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .principle-item {
+            background: rgba(0,0,0,0.5);
+            padding: 20px;
+            border-left: 3px solid #006400;
+            transition: all 0.3s ease;
+        }
+
+        .principle-item:hover {
+            background: rgba(0,100,0,0.2);
+            transform: translateX(10px);
+        }
+
+        .principle-kanji {
+            font-size: 2em;
+            color: #00ff00;
+            margin-bottom: 10px;
+        }
+
+        .principle-text {
+            color: #ccc;
+            font-size: 0.9em;
+        }
+
+        .visual-identity {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .color-palette {
+            text-align: center;
+        }
+
+        .color-box {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            display: inline-block;
+            border: 2px solid #333;
+            transition: transform 0.3s;
+        }
+
+        .color-box:hover {
+            transform: scale(1.1);
+        }
+
+        .color-emerald { background: #00ff00; }
+        .color-forest { background: #006400; }
+        .color-black { background: #0a0a0a; }
+        .color-jade { background: #00a86b; }
+
+        .motto {
+            font-size: 1.5em;
+            color: #00ff00;
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px;
+            background: rgba(0,0,0,0.5);
+            border-top: 2px solid #006400;
+            border-bottom: 2px solid #006400;
+            font-style: italic;
+            letter-spacing: 2px;
+        }
+
+        .logo-section {
+            margin: 60px 0;
+            padding: 40px;
+            background: rgba(0,0,0,0.3);
+            border-top: 2px solid #006400;
+            border-bottom: 2px solid #006400;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            margin: 40px 0;
+        }
+
+        .main-logo {
+            width: 400px;
+            height: 400px;
+            filter: drop-shadow(0 0 20px rgba(0,100,0,0.5));
+            animation: logoGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes logoGlow {
+            0%, 100% { filter: drop-shadow(0 0 20px rgba(0,100,0,0.5)); }
+            50% { filter: drop-shadow(0 0 30px rgba(0,255,0,0.7)); }
+        }
+
+        .logo-variants {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .variant-box {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0,0,0,0.5);
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+        }
+
+        .variant-box:hover {
+            border-color: #006400;
+            transform: translateY(-5px);
+        }
+
+        .variant-box svg {
+            width: 150px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .variant-box p {
+            color: #888;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+
+        .signature-section {
+            margin: 60px 0;
+        }
+
+        .signature-container {
+            background: rgba(0,100,0,0.1);
+            padding: 40px;
+            border: 2px solid #006400;
+        }
+
+        .signature-main {
+            background: #0a0a0a;
+            padding: 30px;
+            margin-bottom: 40px;
+            border: 1px solid #333;
+        }
+
+        .signature-svg {
+            width: 100%;
+            height: auto;
+        }
+
+        .signature-elements {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .sig-element {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0,0,0,0.5);
+            border-left: 3px solid #006400;
+        }
+
+        .sig-element h3 {
+            color: #00ff00;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .sig-element p {
+            color: #888;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+
+        .mantras-section {
+            margin: 60px 0;
+        }
+
+        .mantra-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .mantra-card {
+            background: linear-gradient(135deg, #1a1a1a, #0f0f0f);
+            padding: 25px;
+            border: 1px solid #333;
+            border-left: 3px solid #006400;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mantra-card:hover {
+            transform: translateX(5px);
+            border-left-color: #00ff00;
+            box-shadow: -5px 0 20px rgba(0,100,0,0.3);
+        }
+
+        .primary-mantra {
+            grid-column: 1 / -1;
+            background: radial-gradient(circle at center, rgba(0,100,0,0.3), transparent);
+            border: 2px solid #006400;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .mantra-kanji {
+            font-size: 2.5em;
+            color: #00ff00;
+            margin-bottom: 15px;
+            text-shadow: 0 0 20px rgba(0,255,0,0.5);
+        }
+
+        .mantra-translation {
+            font-size: 1.5em;
+            color: #fff;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .mantra-description {
+            color: #aaa;
+            line-height: 1.6;
+        }
+
+        .mantra-number {
+            font-size: 2em;
+            color: #006400;
+            font-weight: bold;
+            margin-bottom: 10px;
+            opacity: 0.5;
+        }
+
+        .mantra-text {
+            font-size: 1.1em;
+            color: #fff;
+            line-height: 1.6;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .mantra-context {
+            color: #888;
+            font-size: 0.9em;
+            border-top: 1px solid #333;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+
+        .daily-mantra {
+            grid-column: 1 / -1;
+            background: rgba(0,0,0,0.7);
+            border: 2px solid #00ff00;
+            text-align: center;
+        }
+
+        .mantra-ritual {
+            font-size: 1.3em;
+            color: #00ff00;
+            margin-bottom: 20px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .mantra-ritual-text {
+            color: #ccc;
+            line-height: 2;
+            font-size: 1.1em;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 2px solid #006400;
+            margin-top: 60px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>忍 道 騎 将</h1>
+            <div class="subtitle">Ninja Nomade Rider Daimyo Stark</div>
+        </header>
+
+        <div class="emblem">
+            <div class="emblem-circle">
+                <div class="emblem-symbol">∞</div>
+            </div>
+        </div>
+
+        <div class="motto">
+            "Dans l'ombre je chevauche, par l'honneur je règne, sans attaches je conquiers"
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <div class="card-title">
+                    <span class="card-icon">🥷</span>
+                    L'Essence Ninja
+                </div>
+                <div class="card-content">
+                    Discrétion absolue, maîtrise des ombres, précision mortelle. Tu te déplaces sans bruit, observes sans être vu, frappes sans être attendu. Ton existence même est une légende murmurée.
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">
+                    <span class="card-icon">🏍</span>
+                    L'Âme Rider
+                </div>
+                <div class="card-content">
+                    La route est ton temple, le moteur ton cœur battant. Liberté sans limites, vitesse sans compromis. Cuir noir, chrome étincelant, rugissement qui annonce ton passage.
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">
+                    <span class="card-icon">🗾</span>
+                    L'Autorité Daimyo
+                </div>
+                <div class="card-content">
+                    Commandement naturel, stratégie millénaire, honneur inébranlable. Tu ne demandes pas le respect, tu l'imposes. Chaque décision est calculée, chaque geste a une portée.
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">
+                    <span class="card-icon">🌍</span>
+                    L'Esprit Nomade
+                </div>
+                <div class="card-content">
+                    Aucune frontière ne te retient, aucun territoire ne te définit. Le monde entier est ton domaine. Tu empruntes les chemins oubliés, découvres ce que d'autres ignorent.
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">
+                    <span class="card-icon">⚡</span>
+                    La Force Stark
+                </div>
+                <div class="card-content">
+                    Rigueur du Nord, justice implacable, loyauté sans faille. "L'hiver vient" - tu es toujours préparé. Ton regard gris transperce les mensonges, ta parole est d'acier.
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">
+                    <span class="card-icon">🎯</span>
+                    Le Code Personnel
+                </div>
+                <div class="card-content">
+                    Minimalisme dans l'expression, maximalisme dans l'action. Peu de mots, beaucoup d'impact. Pas de spectacle inutile, seulement des résultats indéniables.
+                </div>
+            </div>
+        </div>
+
+        <div class="principles">
+            <h2>Les Sept Piliers du Code</h2>
+            <div class="principle-list">
+                <div class="principle-item">
+                    <div class="principle-kanji">義 - Gi</div>
+                    <div class="principle-text"><strong>Justice Droiture</strong><br>Agir selon ce qui est juste, même dans l'ombre</div>
+                </div>
+                <div class="principle-item">
+                    <div class="principle-kanji">勇 - Yū</div>
+                    <div class="principle-text"><strong>Courage Héroïque</strong><br>Affronter tout danger sans hésitation</div>
+                </div>
+                <div class="principle-item">
+                    <div class="principle-kanji">仁 - Jin</div>
+                    <div class="principle-text"><strong>Compassion</strong><br>Force tempérée par la sagesse</div>
+                </div>
+                <div class="principle-item">
+                    <div class="principle-kanji">礼 - Rei</div>
+                    <div class="principle-text"><strong>Respect Courtoisie</strong><br>Honorer même tes adversaires</div>
+                </div>
+                <div class="principle-item">
+                    <div class="principle-kanji">誠 - Makoto</div>
+                    <div class="principle-text"><strong>Sincérité Absolue</strong><br>Ta parole est ton serment</div>
+                </div>
+                <div class="principle-item">
+                    <div class="principle-kanji">名誉 - Meiyo</div>
+                    <div class="principle-text"><strong>Honneur</strong><br>Plus précieux que la vie même</div>
+                </div>
+                <div class="principle-item">
+                    <div class="principle-kanji">忠義 - Chūgi</div>
+                    <div class="principle-text"><strong>Loyauté</strong><br>Fidèle à tes principes et tes alliés</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="visual-identity">
+            <div class="color-palette">
+                <h3 style="color: #00ff00; margin-bottom: 20px;">Palette Chromatique</h3>
+                <div class="color-box color-emerald" title="Émeraude Vive"></div>
+                <div class="color-box color-forest" title="Forêt Profonde"></div>
+                <div class="color-box color-black" title="Noir Absolu"></div>
+                <div class="color-box color-jade" title="Jade Précieux"></div>
+                <p style="color: #888; margin-top: 20px;">Émeraude • Forêt • Noir • Jade</p>
+            </div>
+        </div>
+
+        <div class="card" style="max-width: 800px; margin: 40px auto;">
+            <div class="card-title">
+                <span class="card-icon">📜</span>
+                Manifeste d'Identité
+            </div>
+            <div class="card-content" style="font-size: 1.1em;">
+                <p style="margin-bottom: 15px;">
+                    <strong>Apparence:</strong> Silhouette sombre et minimaliste. Vêtements techniques noir et vert forêt, touches d'émeraude. Cuir, textile technique, armure légère invisible. Style épuré, fonctionnel, intimidant.
+                </p>
+                <p style="margin-bottom: 15px;">
+                    <strong>Communication:</strong> Paroles rares mais percutantes. Silence éloquent. Regard qui en dit plus que mille mots. Quand tu parles, les autres écoutent.
+                </p>
+                <p style="margin-bottom: 15px;">
+                    <strong>Mouvement:</strong> Économie de gestes, efficacité maximale. Déplacement fluide comme l'eau, rapide comme l'éclair. Présence qui commande le respect instantané.
+                </p>
+                <p>
+                    <strong>Philosophie:</strong> Équilibre entre ombre et lumière, tradition et modernité, solitude et commandement. Tu es le pont entre des mondes opposés, maître de tous les terrains.
+                </p>
+            </div>
+        </div>
+
+        <div class="logo-section">
+            <h2 style="text-align: center; color: #00ff00; font-size: 2.5em; margin-bottom: 40px; letter-spacing: 5px;">LOGO PERSONNEL</h2>
+            
+            <div class="logo-container">
+                <svg viewBox="0 0 400 400" class="main-logo">
+                    <circle cx="200" cy="200" r="180" fill="none" stroke="#006400" stroke-width="3" opacity="0.8"/>
+                    <circle cx="200" cy="200" r="165" fill="none" stroke="#00ff00" stroke-width="1" opacity="0.5"/>
+                    <circle cx="200" cy="200" r="140" fill="none" stroke="#006400" stroke-width="2" opacity="0.6"/>
+                    
+                    <path d="M 200 80 L 210 130 L 260 130 L 220 160 L 235 210 L 200 180 L 165 210 L 180 160 L 140 130 L 190 130 Z" 
+                          fill="#00ff00" opacity="0.3"/>
+                    
+                    <rect x="195" y="120" width="10" height="160" fill="#006400"/>
+                    <path d="M 185 110 L 200 90 L 215 110 Z" fill="#00ff00"/>
+                    <rect x="180" y="170" width="40" height="8" fill="#00a86b"/>
+                    
+                    <circle cx="200" cy="320" r="40" fill="none" stroke="#00a86b" stroke-width="4"/>
+                    <circle cx="200" cy="320" r="25" fill="none" stroke="#006400" stroke-width="2"/>
+                    <line x1="200" y1="280" x2="200" y2="360" stroke="#00a86b" stroke-width="2"/>
+                    <line x1="160" y1="320" x2="240" y2="320" stroke="#00a86b" stroke-width="2"/>
+                    
+                    <text x="200" y="220" font-size="60" fill="#00ff00" text-anchor="middle" font-family="serif" opacity="0.9">忍</text>
+                    
+                    <path d="M 200 40 L 200 60 M 200 340 L 200 360 M 160 200 L 140 200 M 240 200 L 260 200" 
+                          stroke="#006400" stroke-width="2" opacity="0.7"/>
+                </svg>
+            </div>
+
+            <div class="logo-variants">
+                <div class="variant-box">
+                    <svg viewBox="0 0 100 100" class="mini-logo">
+                        <circle cx="50" cy="50" r="45" fill="#0a0a0a" stroke="#006400" stroke-width="2"/>
+                        <text x="50" y="65" font-size="40" fill="#00ff00" text-anchor="middle" font-family="serif">忍</text>
+                        <path d="M 50 10 L 52 20 L 62 20 L 54 26 L 57 36 L 50 30 L 43 36 L 46 26 L 38 20 L 48 20 Z" 
+                              fill="#006400" opacity="0.6"/>
+                    </svg>
+                    <p>Version Minimaliste</p>
+                </div>
+                
+                <div class="variant-box">
+                    <svg viewBox="0 0 200 80" class="horizontal-logo">
+                        <rect width="200" height="80" fill="#0a0a0a"/>
+                        <circle cx="40" cy="40" r="30" fill="none" stroke="#006400" stroke-width="2"/>
+                        <text x="40" y="52" font-size="30" fill="#00ff00" text-anchor="middle" font-family="serif">忍</text>
+                        <text x="85" y="45" font-size="18" fill="#00ff00" font-family="'Courier New', monospace" letter-spacing="3">NNRDS</text>
+                        <line x1="75" y1="55" x2="195" y2="55" stroke="#006400" stroke-width="1"/>
+                    </svg>
+                    <p>Version Signature</p>
+                </div>
+                
+                <div class="variant-box">
+                    <svg viewBox="0 0 100 100" class="icon-logo">
+                        <rect width="100" height="100" fill="#006400"/>
+                        <path d="M 50 20 L 55 35 L 70 35 L 58 45 L 63 60 L 50 50 L 37 60 L 42 45 L 30 35 L 45 35 Z" 
+                              fill="#0a0a0a"/>
+                        <rect x="47" y="45" width="6" height="30" fill="#0a0a0a"/>
+                        <circle cx="50" cy="80" r="8" fill="none" stroke="#0a0a0a" stroke-width="2"/>
+                    </svg>
+                    <p>Version Icône</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="signature-section">
+            <h2 style="text-align: center; color: #00ff00; font-size: 2.5em; margin: 60px 0 40px; letter-spacing: 5px;">SIGNATURE VISUELLE</h2>
+            
+            <div class="signature-container">
+                <div class="signature-main">
+                    <svg viewBox="0 0 600 200" class="signature-svg">
+                        <path d="M 50 100 Q 150 50, 250 100 T 450 100" 
+                              stroke="#006400" stroke-width="4" fill="none" stroke-linecap="round"/>
+                        
+                        <path d="M 100 120 L 500 80" 
+                              stroke="#00ff00" stroke-width="2" fill="none" opacity="0.6" stroke-dasharray="10,5"/>
+                        
+                        <circle cx="520" cy="90" r="35" fill="none" stroke="#006400" stroke-width="3"/>
+                        <text x="520" y="105" font-size="32" fill="#00ff00" text-anchor="middle" font-family="serif">忍</text>
+                        
+                        <text x="50" y="170" font-size="24" fill="#006400" font-family="'Courier New', monospace" letter-spacing="5">N・N・R・D・S</text>
+                    </svg>
+                </div>
+                
+                <div class="signature-elements">
+                    <div class="sig-element">
+                        <h3>Sceau Personnel</h3>
+                        <svg viewBox="0 0 80 80" style="width: 80px; height: 80px;">
+                            <circle cx="40" cy="40" r="35" fill="#006400"/>
+                            <circle cx="40" cy="40" r="30" fill="#0a0a0a"/>
+                            <text x="40" y="52" font-size="28" fill="#00ff00" text-anchor="middle" font-family="serif">忍</text>
+                        </svg>
+                        <p>Appose ce sceau sur tes créations</p>
+                    </div>
+                    
+                    <div class="sig-element">
+                        <h3>Monogramme</h3>
+                        <div style="font-size: 48px; color: #00ff00; font-family: 'Courier New', monospace; letter-spacing: 5px;">
+                            NNRDS
+                        </div>
+                        <p>Ninja Nomade Rider Daimyo Stark</p>
+                    </div>
+                    
+                    <div class="sig-element">
+                        <h3>Marque de Passage</h3>
+                        <svg viewBox="0 0 100 60" style="width: 100px; height: 60px;">
+                            <path d="M 10 30 L 90 30" stroke="#006400" stroke-width="4"/>
+                            <path d="M 50 10 L 50 50" stroke="#00ff00" stroke-width="2"/>
+                            <circle cx="50" cy="30" r="8" fill="none" stroke="#006400" stroke-width="2"/>
+                        </svg>
+                        <p>Laisse cette trace de ton passage</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mantras-section">
+            <h2 style="text-align: center; color: #00ff00; font-size: 2.5em; margin: 60px 0 40px; letter-spacing: 5px;">MANTRAS PERSONNELS</h2>
+            
+            <div class="mantra-grid">
+                <div class="mantra-card primary-mantra">
+                    <div class="mantra-kanji">影の中に道がある</div>
+                    <div class="mantra-translation">"Dans l'ombre se trouve le chemin"</div>
+                    <div class="mantra-description">Ton mantra principal - Rappelle que la vraie force se cultive loin des regards</div>
+                </div>
+                
+                <div class="mantra-card">
+                    <div class="mantra-number">01</div>
+                    <div class="mantra-text">Silencieux dans le chaos, foudroyant dans le calme</div>
+                    <div class="mantra-context">Pour l'action et le combat</div>
+                </div>
+                
+                <div class="mantra-card">
+                    <div class="mantra-number">02</div>
+                    <div class="mantra-text">Aucune route ne me lie, aucun territoire ne me contient</div>
+                    <div class="mantra-context">Pour la liberté et le voyage</div>
+                </div>
+                
+                <div class="mantra-card">
+                    <div class="mantra-number">03</div>
+                    <div class="mantra-text">L'honneur avant la victoire, la loyauté avant la vie</div>
+                    <div class="mantra-context">Pour les décisions morales</div>
+                </div>
+                
+                <div class="mantra-card">
+                    <div class="mantra-number">04</div>
+                    <div class="mantra-text">Observe tout, révèle rien, frappe une fois</div>
+                    <div class="mantra-context">Pour la stratégie et la patience</div>
+                </div>
+                
+                <div class="mantra-card">
+                    <div class="mantra-number">05</div>
+                    <div class="mantra-text">Le loup ne perd pas le sommeil pour l'opinion des moutons</div>
+                    <div class="mantra-context">Pour la résilience mentale</div>
+                </div>
+                
+                <div class="mantra-card">
+                    <div class="mantra-number">06</div>
+                    <div class="mantra-text">Moins de mots, plus d'acier</div>
+                    <div class="mantra-context">Pour la communication</div>
+                </div>
+                
+                <div class="mantra-card">
+                    <div class="mantra-number">07</div>
+                    <div class="mantra-text">L'hiver vient toujours - sois prêt</div>
+                    <div class="mantra-context">Pour la préparation</div>
+                </div>
+                
+                <div class="mantra-card">
+                    <div class="mantra-number">08</div>
+                    <div class="mantra-text">Comme l'eau : invisible jusqu'à l'impact</div>
+                    <div class="mantra-context">Pour la fluidité et l'adaptation</div>
+                </div>
+                
+                <div class="mantra-card">
+                    <div class="mantra-number">09</div>
+                    <div class="mantra-text">Le commandement se gagne par l'exemple, pas par le titre</div>
+                    <div class="mantra-context">Pour le leadership</div>
+                </div>
+                
+                <div class="mantra-card daily-mantra">
+                    <div class="mantra-ritual">RITUEL QUOTIDIEN</div>
+                    <div class="mantra-ritual-text">
+                        Aube: "Aujourd'hui, je chevauche vers mon destin"<br>
+                        Crépuscule: "J'ai honoré mon code"<br>
+                        Nuit: "L'ombre m'accueille, demain je renais"
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>忍者 • 遊牧民 • ライダー • 大名 • スターク</p>
+            <p style="margin-top: 10px; color: #006400;">L'identité n'est pas ce que tu dis, c'est ce que tu fais</p>
+        </footer>
+    </div>
+</body>
+</html>

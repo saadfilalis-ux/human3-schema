@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>HUMAN 3.0 – Schéma Interactif</title>
+<style>
+    body { font-family: Arial, sans-serif; background: #f2f2f2; margin: 0; }
+    .container { width: 100%; height: 100vh; display: flex; justify-content: center; align-items: center; position: relative; }
+    .node { 
+        position: absolute; 
+        padding: 14px 22px; 
+        border-radius: 14px; 
+        color: white; 
+        font-weight: bold; 
+        cursor: pointer; 
+        transition: 0.2s;
+        text-align: center;
+    }
+    .node:hover { transform: scale(1.1); opacity: 0.9; }
+    #center {
+        background: black;
+        padding: 22px 30px;
+        border-radius: 20px;
+        font-size: 24px;
+    }
+    #infoBox {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: white;
+        padding: 22px;
+        border-radius: 12px;
+        width: 60%;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        display: none;
+        font-size: 18px;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div id="center" onclick="showInfo('HUMAN 3.0', 'Le noyau de ton évolution intégrale et systémique.')">
+        HUMAN 3.0
+    </div>
+
+    <div class="node" style="top:10%; left:48%; background:#1F618D;"
+         onclick="showInfo('Carrière & Projets', 'Leadership, création de valeur, vision, systèmes professionnels.')">
+         Carrière & Projets
+    </div>
+
+    <div class="node" style="top:28%; left:75%; background:#117864;"
+         onclick="showInfo('Santé & Performance Humaine', 'Force, mobilité, longévité, discipline martiale, optimisation.')">
+         Santé & Performance
+    </div>
+
+    <div class="node" style="bottom:28%; left:75%; background:#9C640C;"
+         onclick="showInfo('Finances & Abondance', 'Gestion du capital, revenus autonomes, actifs digitaux, abondance consciente.')">
+         Finances & Abondance
+    </div>
+
+    <div class="node" style="bottom:10%; left:48%; background:#6C3483;"
+         onclick="showInfo('Loisirs & Exploration Humaine', 'Art, voyages, surf, photographie, approche existentielle du loisir.')">
+         Loisirs & Exploration
+    </div>
+
+    <div class="node" style="bottom:28%; left:20%; background:#B03A2E;"
+         onclick="showInfo('Relations & Écosystème Humain', 'Réseau stratégique, alliances, intelligence sociale, communauté.')">
+         Relations & Réseau
+    </div>
+
+    <div class="node" style="top:28%; left:20%; background:#2E4053;"
+         onclick="showInfo('Spiritualité & Conscience', 'Stoïcisme, foi, méditation, présence radicale, sagesse pratique.')">
+         Spiritualité & Conscience
+    </div>
+</div>
+
+<div id="infoBox"></div>
+
+<script>
+function showInfo(title, text) {
+    let box = document.getElementById("infoBox");
+    box.innerHTML = "<h2 style='margin-top:0;'>" + title + "</h2><p>" + text + "</p>";
+    box.style.display = "block";
+}
+</script>
+
+</body>
+</html>
