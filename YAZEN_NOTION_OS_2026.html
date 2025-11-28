@@ -1,0 +1,404 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>YAZEN OS 2026 – Notion Style</title>
+<style>
+    :root {
+        --bg: #050608;
+        --card-bg: #111217;
+        --border: #2a2d35;
+        --text-main: #f5f5f5;
+        --text-muted: #a0a3af;
+        --accent: #3b82f6;
+    }
+    * { box-sizing: border-box; }
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+        background: var(--bg);
+        color: var(--text-main);
+    }
+    .app {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 20px 18px 40px 18px;
+    }
+    .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 16px;
+    }
+    .top-left {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .logo {
+        width: 26px;
+        height: 26px;
+        border-radius: 8px;
+        border: 1px solid rgba(255,255,255,0.12);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        background: radial-gradient(circle at top, #1f2937, #020617);
+    }
+    .title-main {
+        font-size: 18px;
+        font-weight: 600;
+    }
+    .title-sub {
+        font-size: 11px;
+        color: var(--text-muted);
+    }
+    .tagline {
+        font-size: 11px;
+        color: var(--text-muted);
+    }
+    .nav {
+        display: flex;
+        gap: 8px;
+        margin: 10px 0 14px 0;
+        flex-wrap: wrap;
+    }
+    .nav button {
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: #090b10;
+        color: var(--text-muted);
+        font-size: 11px;
+        padding: 6px 12px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+    .nav button.active {
+        border-color: var(--accent);
+        color: #e5edff;
+        background: rgba(59,130,246,0.12);
+    }
+    .nav button span.icon {
+        font-size: 12px;
+    }
+    .section {
+        display: none;
+        margin-top: 8px;
+    }
+    .section.active {
+        display: block;
+    }
+    .block {
+        border-radius: 14px;
+        border: 1px solid var(--border);
+        background: #08090d;
+        padding: 14px 14px 12px 14px;
+        margin-bottom: 12px;
+    }
+    .block-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 4px;
+    }
+    .block-title {
+        font-size: 14px;
+        font-weight: 600;
+    }
+    .block-pill {
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--text-muted);
+    }
+    .block-text {
+        font-size: 12px;
+        color: var(--text-muted);
+        line-height: 1.4;
+        margin-bottom: 6px;
+    }
+    .pill-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 6px;
+    }
+    .pill {
+        padding: 4px 9px;
+        border-radius: 999px;
+        border: 1px solid rgba(255,255,255,0.08);
+        font-size: 11px;
+        color: var(--text-muted);
+        background: #10121a;
+    }
+    .columns {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 6px;
+    }
+    @media (max-width: 900px) {
+        .columns { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 680px) {
+        .columns { grid-template-columns: minmax(0, 1fr); }
+    }
+    .card {
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        background: #0b0d12;
+        padding: 10px 10px 9px 10px;
+        font-size: 12px;
+    }
+    .card-label {
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--text-muted);
+        margin-bottom: 3px;
+    }
+    .card-title {
+        font-size: 13px;
+        font-weight: 600;
+        margin-bottom: 4px;
+    }
+    .card-note {
+        font-size: 11px;
+        color: var(--text-muted);
+    }
+    .hint {
+        font-size: 11px;
+        color: var(--text-muted);
+        margin-top: 6px;
+    }
+    .list {
+        font-size: 12px;
+        color: var(--text-muted);
+        margin: 4px 0 0 0;
+        padding-left: 16px;
+    }
+    .list li {
+        margin-bottom: 2px;
+    }
+</style>
+</head>
+<body>
+
+<div class="app">
+    <div class="topbar">
+        <div class="top-left">
+            <div class="logo">Y</div>
+            <div>
+                <div class="title-main">YAZEN OS — 2026</div>
+                <div class="title-sub">HUMAN 3.0 · Ninja Nomade Rider Daimyo Starl</div>
+            </div>
+        </div>
+        <div class="tagline">Système Notion exporté en HTML · Embeddable</div>
+    </div>
+
+    <div class="nav">
+        <button class="active" data-section="core"><span class="icon">🏯</span>OS & Vision</button>
+        <button data-section="control"><span class="icon">🗺️</span>Control Room 2026</button>
+        <button data-section="domains"><span class="icon">🌐</span>Domaines HUMAN 3.0</button>
+        <button data-section="bases"><span class="icon">📚</span>Bases de données</button>
+        <button data-section="templates"><span class="icon">📦</span>Templates</button>
+    </div>
+
+    <!-- SECTION CORE -->
+    <div class="section active" id="core">
+        <div class="block">
+            <div class="block-header">
+                <div class="block-title">YAZEN PROTOCOLS — System Core</div>
+                <div class="block-pill">Noyau philosophique & structurel</div>
+            </div>
+            <div class="block-text">
+                Ce bloc résume l’OS : ton identité, tes lois internes et la trajectoire de long terme (Vision 2039).
+            </div>
+            <ul class="list">
+                <li><strong>🧬 HUMAN 3.0 Matrix</strong> — Carte des niveaux 1.0 / 2.0 / 3.0 appliqués à tes 6 domaines.</li>
+                <li><strong>🐉 Identité — Ninja Nomade Rider Daimyo Starl</strong> — Archétype directeur.</li>
+                <li><strong>🎴 Les 7 Lois du YAZEN</strong> — Discipline, non-forme, 7% d’effort quotidien.</li>
+                <li><strong>♾️ La Non-Forme</strong> — Essai / manifeste.</li>
+                <li><strong>🔮 Vision 2039</strong> — Ligne d’horizon et expansions.</li>
+            </ul>
+            <div class="pill-row">
+                <div class="pill">YAZEN PROTOCOLS</div>
+                <div class="pill">Non-Forme</div>
+                <div class="pill">Vision 2039</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION CONTROL ROOM -->
+    <div class="section" id="control">
+        <div class="block">
+            <div class="block-header">
+                <div class="block-title">YAZEN CONTROL ROOM — 2026</div>
+                <div class="block-pill">Pilotage annuel</div>
+            </div>
+            <div class="block-text">
+                Vue d’ensemble : ce que tu pilotes cette année, de manière synthétique.
+            </div>
+            <div class="columns">
+                <div class="card">
+                    <div class="card-label">Dashboard</div>
+                    <div class="card-title">🎛️ Dashboard Général</div>
+                    <div class="card-note">Vues combinées des Objectifs, Projets, Tâches, Discipline 7%.</div>
+                </div>
+                <div class="card">
+                    <div class="card-label">Priorités</div>
+                    <div class="card-title">🔥 Must-Win Battles 2026</div>
+                    <div class="card-note">3–5 batailles à gagner absolument dans l’année.</div>
+                </div>
+                <div class="card">
+                    <div class="card-label">Tracking</div>
+                    <div class="card-title">📊 ScoreMensuel 7%</div>
+                    <div class="card-note">Compteur des efforts quotidiens cumulés.</div>
+                </div>
+                <div class="card">
+                    <div class="card-label">Trajectory</div>
+                    <div class="card-title">🧭 Roadmap 2026–2030</div>
+                    <div class="card-note">Projection sur les 4 prochaines années.</div>
+                </div>
+            </div>
+            <div class="hint">Dans Notion, cette section correspond à ta page principale avec plusieurs vues de bases (Objectifs, Projets, Tâches).</div>
+        </div>
+    </div>
+
+    <!-- SECTION DOMAINES -->
+    <div class="section" id="domains">
+        <div class="block">
+            <div class="block-header">
+                <div class="block-title">Domaines HUMAN 3.0</div>
+                <div class="block-pill">6 portails de vie</div>
+            </div>
+            <div class="block-text">
+                Chaque domaine est une page/portail dans Notion, reliée aux mêmes bases (Objectifs, Projets, Tâches) avec des filtres.
+            </div>
+            <div class="columns">
+                <div class="card">
+                    <div class="card-label">01 · Vocation</div>
+                    <div class="card-title">🏹 Carrière & Projets</div>
+                    <div class="card-note">
+                        Page dédiée à l’excellence professionnelle et à la création de valeur (YAZEN PROTOCOLS, deals, livrables).
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-label">02 · Corps</div>
+                    <div class="card-title">🛡️ Santé & Performance Humaine</div>
+                    <div class="card-note">
+                        Protocoles Muay Thaï, BJJ, biohacking, charge d’entraînement, journal de forme.
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-label">03 · Capital</div>
+                    <div class="card-title">💰 Finances & Capital Évolutionnaire</div>
+                    <div class="card-note">
+                        Budget 2026, actifs digitaux, revenus autonomes, plan Capital 2039.
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-label">04 · Exploration</div>
+                    <div class="card-title">🌍 Loisirs & Exploration Humaine</div>
+                    <div class="card-note">
+                        Trips, surf, photographie, journaux de voyage & expériences esthétiques.
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-label">05 · Écosystème</div>
+                    <div class="card-title">🫂 Relations & Écosystème Humain</div>
+                    <div class="card-note">
+                        Cartographie du réseau, alliances stratégiques, cercles, communauté 7%.
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-label">06 · Conscience</div>
+                    <div class="card-title">🔥 Spiritualité & Conscience</div>
+                    <div class="card-note">
+                        Stoïcisme, foi, rituels, méditation, présence radicale, non-forme.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION BASES -->
+    <div class="section" id="bases">
+        <div class="block">
+            <div class="block-header">
+                <div class="block-title">Bases de données principales</div>
+                <div class="block-pill">Cœur opérationnel</div>
+            </div>
+            <div class="block-text">
+                Les trois bases principales autour desquelles tout s’organise. Elles sont déjà spécifiées en JSON (templates).
+            </div>
+            <div class="columns">
+                <div class="card">
+                    <div class="card-label">🎯 Objectifs</div>
+                    <div class="card-title">OBJECTIFS 2026 — YAZEN</div>
+                    <div class="card-note">Objectifs par domaine, type (quantitatif / qualitatif / spirituel / créatif), impact et intention.</div>
+                </div>
+                <div class="card">
+                    <div class="card-label">📦 Projets</div>
+                    <div class="card-title">PROJETS 2026 — YAZEN SYSTEM</div>
+                    <div class="card-note">Projets reliés aux objectifs et aux tâches, avec statut, priorité et rituel associé.</div>
+                </div>
+                <div class="card">
+                    <div class="card-label">⚡ Exécution</div>
+                    <div class="card-title">SPRINT WEEK — Tâches</div>
+                    <div class="card-note">Tâches reliées aux projets, triées par date, bloc focus, priorité et effort 7%.</div>
+                </div>
+            </div>
+            <div class="hint">Tu peux ajouter ici d’autres bases : finances, trackers sportifs, journal spirituel, etc.</div>
+        </div>
+    </div>
+
+    <!-- SECTION TEMPLATES -->
+    <div class="section" id="templates">
+        <div class="block">
+            <div class="block-header">
+                <div class="block-title">Bibliothèque de templates</div>
+                <div class="block-pill">Action immédiate</div>
+            </div>
+            <div class="block-text">
+                Modèles de pages que tu dupliques selon les semaines, mois ou projets.
+            </div>
+            <ul class="list">
+                <li><strong>🎯 Objectif 2026</strong> — une page liée à la base Objectifs (vision, mesures, rituels).</li>
+                <li><strong>📦 Projet 2026</strong> — une page liée à la base Projets (scope, livrables, checklist).</li>
+                <li><strong>⚡ Semaine YAZEN</strong> — structure 7 jours, focus, récap.</li>
+                <li><strong>🌅 Rituel Matinal</strong> — protocole mental / physique / spirituel.</li>
+                <li><strong>🌙 Rituel Nocturne</strong> — revue de la journée, gratitude, ajustements.</li>
+                <li><strong>🐉 Discipline 7%</strong> — tableau d’habitudes minimales.</li>
+                <li><strong>🔁 Bilan Mensuel</strong> — analyse, apprentissages, reset.</li>
+            </ul>
+            <div class="pill-row">
+                <div class="pill">Template Objectif</div>
+                <div class="pill">Template Projet</div>
+                <div class="pill">Template Semaine</div>
+                <div class="pill">Rituel Matin</div>
+                <div class="pill">Rituel Nuit</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.querySelectorAll('.nav button').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const target = btn.getAttribute('data-section');
+        document.querySelectorAll('.nav button').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(target).classList.add('active');
+    });
+});
+</script>
+
+</body>
+</html>
