@@ -1,0 +1,234 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>YAZEN PROTOCOLS – Carte de Vie (Dark)</title>
+<style>
+    :root {
+        --bg: #050608;
+        --card-bg: #111217;
+        --border: #2a2d35;
+        --text-main: #f5f5f5;
+        --text-muted: #a0a3af;
+        --accent-soft: #202331;
+    }
+    * { box-sizing: border-box; }
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+        background: var(--bg);
+        color: var(--text-main);
+    }
+    .page {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 28px 18px 40px 18px;
+    }
+    .header { text-align: center; margin-bottom: 26px; }
+    .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 5px 12px;
+        border-radius: 999px;
+        border: 1px solid rgba(255,255,255,0.08);
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        background: #0b0d11;
+    }
+    .title {
+        margin-top: 14px;
+        font-size: 24px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+    .subtitle {
+        margin-top: 4px;
+        font-size: 13px;
+        color: var(--text-muted);
+    }
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 24px;
+    }
+    @media (max-width: 900px) {
+        .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 640px) {
+        .grid { grid-template-columns: minmax(0, 1fr); }
+    }
+    .card {
+        position: relative;
+        background: var(--card-bg);
+        border-radius: 14px;
+        padding: 14px 14px 15px 14px;
+        border: 1px solid var(--border);
+        cursor: pointer;
+        transition: transform 0.12s ease-out, box-shadow 0.12s ease-out, border-color 0.12s, background 0.12s;
+    }
+    .card:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 12px 22px rgba(0, 0, 0, 0.5);
+        border-color: rgba(255,255,255,0.18);
+        background: #141721;
+    }
+    .card-label {
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        opacity: 0.85;
+        margin-bottom: 6px;
+        color: var(--text-muted);
+    }
+    .card-title {
+        font-size: 15px;
+        font-weight: 600;
+        margin-bottom: 4px;
+    }
+    .card-note {
+        font-size: 12px;
+        color: var(--text-muted);
+        line-height: 1.4;
+    }
+    .card-tag {
+        font-size: 10px;
+        color: var(--text-muted);
+        margin-top: 9px;
+        opacity: 0.8;
+    }
+    .hint {
+        margin-top: 9px;
+        font-size: 11px;
+        color: var(--text-muted);
+        text-align: center;
+        opacity: 0.78;
+    }
+    .panel {
+        margin-top: 24px;
+        padding: 14px 14px 13px 14px;
+        border-radius: 14px;
+        border: 1px solid var(--border);
+        background: #08090d;
+        min-height: 110px;
+    }
+    .panel-title {
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 2px;
+    }
+    .panel-sub {
+        font-size: 12px;
+        color: var(--text-muted);
+        margin-bottom: 8px;
+    }
+    .pill-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 6px;
+    }
+    .pill {
+        padding: 4px 9px;
+        border-radius: 999px;
+        border: 1px solid rgba(255,255,255,0.08);
+        font-size: 11px;
+        color: var(--text-muted);
+        background: #10121a;
+    }
+</style>
+</head>
+<body>
+
+<div class="page">
+    <div class="header">
+        <div class="badge">
+            <span>YAZEN PROTOCOLS</span>
+            <span>·</span>
+            <span>Ninja Nomade Rider Daimyo Starl</span>
+        </div>
+        <div class="title">Carte de Vie · HUMAN 3.0</div>
+        <div class="subtitle">6 domaines · sous-domaines cliquables · mode sombre optimisé Notion</div>
+    </div>
+
+    <div class="grid">
+        <div class="card" onclick="showDomain('Carrière & Projets', 'Système de création de valeur aligné avec YAZEN PROTOCOLS.', ['Leadership intégral', 'Design de systèmes', 'YAZEN PROTOCOLS', 'Stratégie 2035'])">
+            <div class="card-label">01 · Vocation</div>
+            <div class="card-title">Carrière & Projets</div>
+            <div class="card-note">Impact, création de valeur, direction stratégique, écosystèmes.</div>
+            <div class="card-tag">Niveau cible : Synthesist 3.0</div>
+        </div>
+
+        <div class="card" onclick="showDomain('Santé & Performance Humaine', 'Corps et système nerveux au service de la mission.', ['Force fonctionnelle', 'BJJ & Boxe', 'Biohacking', 'Longévité 7 %', 'Protocole Muay Thaï'])">
+            <div class="card-label">02 · Corps</div>
+            <div class="card-title">Santé & Performance</div>
+            <div class="card-note">Puissance, mobilité, récupération, discipline martiale quotidienne.</div>
+            <div class="card-tag">Base énergétique du Ninja Nomade</div>
+        </div>
+
+        <div class="card" onclick="showDomain('Finances & Capital Évolutionnaire', 'L’argent comme carburant de liberté et d’impact.', ['Plan Capital 2039', 'Revenus autonomes', 'Actifs numériques', 'Minimalisme financier'])">
+            <div class="card-label">03 · Capital</div>
+            <div class="card-title">Finances & Abondance</div>
+            <div class="card-note">Stabilité, flux, actifs & frugalité stratégique.</div>
+            <div class="card-tag">Architecture financière 7&nbsp;%</div>
+        </div>
+
+        <div class="card" onclick="showDomain('Loisirs & Exploration Humaine', 'Le monde comme dojo, atelier et laboratoire de perception.', ['Nomad Rider Trips', 'Surf & Nature', 'Photographie', 'Art & contemplation'])">
+            <div class="card-label">04 · Exploration</div>
+            <div class="card-title">Loisirs & Exploration</div>
+            <div class="card-note">Voyage, surf, art, expériences extrêmes, contemplation du réel.</div>
+            <div class="card-tag">Expansion sensorielle & esthétique</div>
+        </div>
+
+        <div class="card" onclick="showDomain('Relations & Écosystème Humain', 'Construire un réseau vivant, exigeant et aligné.', ['Réseau Résilience', 'Alliances stratégiques', 'Communauté 7 %', 'Leadership stoïcien'])">
+            <div class="card-label">05 · Écosystème</div>
+            <div class="card-title">Relations & Réseau</div>
+            <div class="card-note">Cercles d’alliés, mentors, pairs & communauté en évolution.</div>
+            <div class="card-tag">Diplomatie émotionnelle</div>
+        </div>
+
+        <div class="card" onclick="showDomain('Spiritualité & Conscience', 'Aligner foi, stoïcisme et présence radicale.', ['Stoïcisme', 'Foi & gratitude', 'Silence & méditation', 'Présence radicale', 'Sagesse nomade'])">
+            <div class="card-label">06 · Conscience</div>
+            <div class="card-title">Spiritualité & Conscience</div>
+            <div class="card-note">Sens, verticalité, ancrage et non-forme en mouvement.</div>
+            <div class="card-tag">Système d’exploitation intérieur</div>
+        </div>
+    </div>
+
+    <div class="hint">
+        Clique sur un domaine pour afficher les sous-domaines et axes YAZEN PROTOCOLS.
+    </div>
+
+    <div class="panel" id="panel">
+        <div class="panel-title">Sélectionne un domaine</div>
+        <div class="panel-sub">Les sous-domaines détaillés apparaîtront ici pour guider ton prochain 7&nbsp;% d’effort.</div>
+        <div class="pill-row">
+            <div class="pill">YAZEN PROTOCOLS</div>
+            <div class="pill">Ninja Nomade Rider Daimyo Starl</div>
+            <div class="pill">HUMAN 3.0</div>
+        </div>
+    </div>
+</div>
+
+<script>
+function showDomain(title, subtitle, items) {
+    const panel = document.getElementById('panel');
+    let html = "";
+    html += "<div class='panel-title'>" + title + "</div>";
+    html += "<div class='panel-sub'>" + subtitle + "</div>";
+    html += "<div class='pill-row'>";
+    items.forEach(i => {
+        html += "<div class='pill'>" + i + "</div>";
+    });
+    html += "</div>";
+    panel.innerHTML = html;
+}
+</script>
+
+</body>
+</html>
