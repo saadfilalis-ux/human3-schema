@@ -1,0 +1,272 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>YAZEN PROTOCOLS – Planning 2026</title>
+<style>
+    :root {
+        --bg: #0f1013;
+        --card-bg: #181a1f;
+        --accent: #f5f5f5;
+        --border: #2a2d35;
+        --text-main: #ffffff;
+        --text-muted: #c2c4cc;
+    }
+    * { box-sizing: border-box; }
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+        background: radial-gradient(circle at top, #202433 0, #0b0c10 55%, #050608 100%);
+        color: var(--text-main);
+    }
+    .page {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 32px 20px 48px 20px;
+    }
+    .header { text-align: center; margin-bottom: 32px; }
+    .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 5px 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(255,255,255,0.1);
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+    }
+    .title {
+        margin-top: 16px;
+        font-size: 26px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+    .subtitle {
+        margin-top: 6px;
+        font-size: 14px;
+        color: var(--text-muted);
+    }
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+        margin-top: 32px;
+    }
+    @media (max-width: 900px) {
+        .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 640px) {
+        .grid { grid-template-columns: minmax(0, 1fr); }
+    }
+    .card {
+        position: relative;
+        background: radial-gradient(circle at top left, rgba(255,255,255,0.05), var(--card-bg));
+        border-radius: 18px;
+        padding: 16px 16px 18px 16px;
+        border: 1px solid var(--border);
+        cursor: pointer;
+        transition: transform 0.16s ease-out, box-shadow 0.16s ease-out, border-color 0.16s;
+        overflow: hidden;
+    }
+    .card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 16px 30px rgba(0, 0, 0, 0.6);
+        border-color: rgba(255,255,255,0.16);
+    }
+    .card-label {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        opacity: 0.85;
+        margin-bottom: 8px;
+    }
+    .card-title {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 6px;
+    }
+    .card-note {
+        font-size: 12px;
+        color: var(--text-muted);
+        line-height: 1.4;
+    }
+    .card-tag {
+        font-size: 11px;
+        color: var(--text-muted);
+        margin-top: 10px;
+        opacity: 0.85;
+    }
+    .hint {
+        margin-top: 10px;
+        font-size: 11px;
+        color: var(--text-muted);
+        text-align: center;
+        opacity: 0.8;
+    }
+    .panel {
+        margin-top: 30px;
+        padding: 18px 18px 16px 18px;
+        border-radius: 18px;
+        border: 1px solid var(--border);
+        background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(10,10,12,0.95));
+        min-height: 130px;
+    }
+    .panel-title {
+        font-size: 15px;
+        font-weight: 600;
+        margin-bottom: 4px;
+    }
+    .panel-sub {
+        font-size: 12px;
+        color: var(--text-muted);
+        margin-bottom: 10px;
+    }
+    .pill-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 8px;
+    }
+    .pill {
+        padding: 5px 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(255,255,255,0.1);
+        font-size: 11px;
+        color: var(--text-muted);
+        background: rgba(0,0,0,0.35);
+        text-decoration: none;
+    }
+    .pill:hover {
+        border-color: rgba(255,255,255,0.3);
+        color: var(--accent);
+    }
+</style>
+</head>
+<body>
+
+<div class="page">
+    <div class="header">
+        <div class="badge">
+            <span>YAZEN PROTOCOLS</span>
+            <span>·</span>
+            <span>Planning 2026</span>
+        </div>
+        <div class="title">Carte de Vie – Planning 2026</div>
+        <div class="subtitle">Chaque pilule ouvre une base Notion : Objectifs · Projets · Tâches</div>
+    </div>
+
+    <div class="grid">
+        <div class="card" onclick="showDomain('Carrière & Projets', 'Plan 2026 pour ta vocation et tes systèmes de valeur.', 'career')">
+            <div class="card-label">01 · Vocation</div>
+            <div class="card-title">Carrière & Projets</div>
+            <div class="card-note">Objectifs, deals, projets structurants, livrables majeurs.</div>
+            <div class="card-tag">Hub Notion : Carrière</div>
+        </div>
+
+        <div class="card" onclick="showDomain('Santé & Performance Humaine', 'Architecture 2026 de ton corps et de ta performance.', 'health')">
+            <div class="card-label">02 · Corps</div>
+            <div class="card-title">Santé & Performance</div>
+            <div class="card-note">Préparation physique, BJJ, Muay Thaï, énergie et récupération.</div>
+            <div class="card-tag">Hub Notion : Santé</div>
+        </div>
+
+        <div class="card" onclick="showDomain('Finances & Capital Évolutionnaire', 'Roadmap financière 2026.', 'finance')">
+            <div class="card-label">03 · Capital</div>
+            <div class="card-title">Finances & Abondance</div>
+            <div class="card-note">Revenus, épargne, side business, actifs digitaux.</div>
+            <div class="card-tag">Hub Notion : Finances</div>
+        </div>
+
+        <div class="card" onclick="showDomain('Loisirs & Exploration Humaine', 'Exploration, voyages et laboratoires créatifs 2026.', 'leisure')">
+            <div class="card-label">04 · Exploration</div>
+            <div class="card-title">Loisirs & Exploration</div>
+            <div class="card-note">Trips, surf, photographie, expériences existentielles.</div>
+            <div class="card-tag">Hub Notion : Exploration</div>
+        </div>
+
+        <div class="card" onclick="showDomain('Relations & Écosystème Humain', 'Cartographie 2026 de ton réseau et de ta communauté.', 'relations')">
+            <div class="card-label">05 · Écosystème</div>
+            <div class="card-title">Relations & Réseau</div>
+            <div class="card-note">Alliances, mentors, pairs, cercles de confiance.</div>
+            <div class="card-tag">Hub Notion : Relations</div>
+        </div>
+
+        <div class="card" onclick="showDomain('Spiritualité & Conscience', 'Pratiques 2026 pour ton axe vertical.', 'spirit')">
+            <div class="card-label">06 · Conscience</div>
+            <div class="card-title">Spiritualité & Conscience</div>
+            <div class="card-note">Stoïcisme, foi, rituels, silence, non-forme.</div>
+            <div class="card-tag">Hub Notion : Conscience</div>
+        </div>
+    </div>
+
+    <div class="hint">
+        Clique sur un domaine, puis sur Objectifs / Projets / Tâches pour ouvrir tes bases Notion 2026.
+    </div>
+
+    <div class="panel" id="panel">
+        <div class="panel-title">Sélectionne un domaine</div>
+        <div class="panel-sub">Les liens vers tes bases Notion 2026 (Objectifs, Projets, Tâches) apparaîtront ici.</div>
+        <div class="pill-row">
+            <a class="pill">Objectifs 2026</a>
+            <a class="pill">Projets 2026</a>
+            <a class="pill">Tâches – Semaine</a>
+        </div>
+    </div>
+</div>
+
+<script>
+// Remplace ces URLs par tes vraies URLs de bases Notion
+const notionLinks = {
+    career: {
+        objectifs: "https://www.notion.so/ton-lien-objectifs-career",
+        projets:   "https://www.notion.so/ton-lien-projets-career",
+        taches:    "https://www.notion.so/ton-lien-taches-career"
+    },
+    health: {
+        objectifs: "https://www.notion.so/ton-lien-objectifs-health",
+        projets:   "https://www.notion.so/ton-lien-projets-health",
+        taches:    "https://www.notion.so/ton-lien-taches-health"
+    },
+    finance: {
+        objectifs: "https://www.notion.so/ton-lien-objectifs-finance",
+        projets:   "https://www.notion.so/ton-lien-projets-finance",
+        taches:    "https://www.notion.so/ton-lien-taches-finance"
+    },
+    leisure: {
+        objectifs: "https://www.notion.so/ton-lien-objectifs-loisirs",
+        projets:   "https://www.notion.so/ton-lien-projets-loisirs",
+        taches:    "https://www.notion.so/ton-lien-taches-loisirs"
+    },
+    relations: {
+        objectifs: "https://www.notion.so/ton-lien-objectifs-relations",
+        projets:   "https://www.notion.so/ton-lien-projets-relations",
+        taches:    "https://www.notion.so/ton-lien-taches-relations"
+    },
+    spirit: {
+        objectifs: "https://www.notion.so/ton-lien-objectifs-spirit",
+        projets:   "https://www.notion.so/ton-lien-projets-spirit",
+        taches:    "https://www.notion.so/ton-lien-taches-spirit"
+    }
+};
+
+function showDomain(title, subtitle, key) {
+    const panel = document.getElementById('panel');
+    const links = notionLinks[key] || {};
+    let html = "";
+    html += "<div class='panel-title'>" + title + "</div>";
+    html += "<div class='panel-sub'>" + subtitle + "</div>";
+    html += "<div class='pill-row'>";
+    html += "<a class='pill' href='" + (links.objectifs || "#") + "' target='_blank'>Objectifs 2026</a>";
+    html += "<a class='pill' href='" + (links.projets   || "#") + "' target='_blank'>Projets 2026</a>";
+    html += "<a class='pill' href='" + (links.taches    || "#") + "' target='_blank'>Tâches – Semaine</a>";
+    html += "</div>";
+    panel.innerHTML = html;
+}
+</script>
+
+</body>
+</html>
